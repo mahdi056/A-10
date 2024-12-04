@@ -12,7 +12,8 @@ const Header = () => {
                 <img className='w-20 h-12 rounded-md' src={logo} alt="" />
             </div>
 
-            <div className='md:hidden'>
+            <div className='md:hidden'> 
+                
                 <FiAlignJustify></FiAlignJustify>
             </div>
 
