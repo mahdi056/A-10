@@ -9,7 +9,7 @@ const Header = () => {
         <div className='flex justify-between mt-4 w-3/4 mx-auto'>
 
             <div>
-                <img className='w-12 h-12 rounded-md' src={logo} alt="" />
+                <img className='w-20 h-12 rounded-md' src={logo} alt="" />
             </div>
 
             <div className='md:hidden'>
