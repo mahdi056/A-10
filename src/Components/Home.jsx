@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div className="w-3/4 mx-auto">
       {/* Carousel */}
-      <div className="carousel w-full h-[500px]">
+      <div className="carousel w-full md:h-[500px]">
         <div id="slide1" className="carousel-item relative w-full">
           <img src={banner1} className="w-full object-cover h-[500px]" alt="Banner 1" />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -81,7 +81,7 @@ const Home = () => {
 
       {/* 2nd extra section */}
 
-      <section className="mt-12 px-4 sm:px-8">
+     <section className="mt-12 px-4 sm:px-8">
   <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6">Testimonials</h2>
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
     <div className="text-center p-6 bg-white shadow-md rounded-lg">
