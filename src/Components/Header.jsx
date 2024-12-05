@@ -20,6 +20,7 @@ const Header = () => {
             <div className='hidden md:block space-x-4'>
                 <NavLink to='/home'>Home</NavLink>
                 <NavLink to='/allvisas'>All Visas</NavLink>
+                
                 <NavLink to='/login'>Login</NavLink>
                 <NavLink to='/registration'>Registration</NavLink>
             </div>

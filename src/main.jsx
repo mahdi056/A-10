@@ -14,6 +14,9 @@ import Allvisas from './Components/Allvisas';
 import Login from './Components/Login';
 import Regstration from './Components/Regstration';
 import Errorpage from './Components/Errorpage';
+import Addvisa from './Components/Addvisa';
+import Myaddedvisa from './Components/Myaddedvisa';
+import Myvisaapplication from './Components/Myvisaapplication';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +44,18 @@ const router = createBrowserRouter([
       {
         path: '/registration',
         element: <Regstration></Regstration>
+      },
+      {
+        path: '/addvisa',
+        element: <Addvisa></Addvisa>
+      },
+      {
+        path: '/myaddedvisa',
+        element: <Myaddedvisa></Myaddedvisa>
+      },
+      {
+        path: '/myvisaapplication',
+        element: <Myvisaapplication></Myvisaapplication>
       }
       
     ]    
