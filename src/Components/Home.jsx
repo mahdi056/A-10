@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import banner1 from "../assets/banner1.jpeg";
 import banner2 from "../assets/banner2.jpeg";
 import banner3 from "../assets/banner3.jpeg";
@@ -8,9 +8,15 @@ import ukImage from '../assets/uk.jpg'
 import australiaImage from '../assets/australia.jpg'
 import germanyImage from '../assets/germany.jpg'
 import japanImage from '../assets/japan.jpg'
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./Provider/Authprovider";
 
 
 const Home = () => {
+
+  const {user} = useContext(AuthContext);
+
+  const navigate = useNavigate();
  
   const latestVisas = [
     {
@@ -139,7 +145,19 @@ const Home = () => {
                 <strong>Application Method:</strong> {visa.application_method}
               </p>
               
-              <button className="btn btn-outline btn-accent">See Details</button>
+              {
+                user? (
+                  <button onClick={()=> navigate('/visadetails')} className="btn btn-outline btn-accent">See Details</button>
+                ):
+                (
+                  <button onClick={()=> navigate('/login')} className="btn btn-outline btn-accent">See Details</button>
+                )
+              }
+              
+              
+              
+              
+              
             </div>
           </div>
         ))}

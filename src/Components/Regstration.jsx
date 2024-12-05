@@ -1,11 +1,33 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from './Provider/Authprovider';
 
 const Regstration = () => {
 
-    const [showpassword, setShowpassword] = useState(false);
+    const {createNewUser,setUser,updateUserProfile,signinWithgoogle} = useContext(AuthContext);
     const [passwordError, setPasswordError] = useState("");
+    const navigate = useNavigate();
+
+
+    const handlegoogleSignIn = () => {
+        signinWithgoogle()
+        .then ((result => {
+            const user = result.user;
+            setUser (user);
+           navigate("/home");
+            
+           
+            
+        }))
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            //   console.log(errorCode,errorMessage);
+          });
+    }
+
+
 
     const handleForm = (e) => {
         e.preventDefault();
@@ -24,6 +46,34 @@ const Regstration = () => {
         } else {
             setPasswordError(""); 
         }
+
+      
+        createNewUser(email,password)
+        .then ((result) => {
+            const user = result.user; 
+            setUser (user);
+
+        updateUserProfile  (
+            {
+            displayName: name,
+            photoURL: photourl
+        })
+        
+        .then(() => {
+            setUser({ ...user, displayName:name, photoURL: photourl });
+           navigate("/home");
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            //   console.log(errorCode,errorMessage);
+          })
+          
+        });
+
+            
+
+        
 
     }
 
@@ -86,7 +136,7 @@ const Regstration = () => {
         </div>
         <p>Already have an account? <Link className="text-blue-600 font-bold" to = "/login">Login</Link> </p>
 
-        {/* <button className="btn" onClick={handlegoogleSignIn}>SignIn With Google <FaGoogle></FaGoogle></button> */}
+        <button className="btn btn-outline btn-accent" onClick={handlegoogleSignIn}>SignIn With Google <FaGoogle></FaGoogle></button>
     </form>
 </div>
 

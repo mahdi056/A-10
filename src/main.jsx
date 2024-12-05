@@ -17,6 +17,8 @@ import Errorpage from './Components/Errorpage';
 import Addvisa from './Components/Addvisa';
 import Myaddedvisa from './Components/Myaddedvisa';
 import Myvisaapplication from './Components/Myvisaapplication';
+import Authprovider from './Components/Provider/Authprovider';
+import Visadetails from './Components/Visadetails';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: '/myvisaapplication',
         element: <Myvisaapplication></Myvisaapplication>
+      },
+      {
+        path: '/visadetails',
+        element: <Visadetails></Visadetails>
       }
       
     ]    
@@ -64,6 +70,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Authprovider>
+        <RouterProvider router={router}></RouterProvider>
+    </Authprovider>
   </StrictMode>,
 )
