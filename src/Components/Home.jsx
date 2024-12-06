@@ -14,10 +14,10 @@ import { AuthContext } from "./Provider/Authprovider";
 
 const Home = () => {
 
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
- 
+
   const latestVisas = [
     {
       id: 1,
@@ -111,62 +111,67 @@ const Home = () => {
       {/* Latest visa Section */}
 
       <section className="mt-8 px-4 sm:px-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6">
-        Latest Visas
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {latestVisas.map((visa) => (
-          <div
-            key={visa.id}
-            className="card bg-white shadow-md rounded-lg overflow-hidden"
-          >
-            {/* Country Image */}
-            <img
-              src={visa.image}
-              alt={`${visa.country} Visa`}
-              className="w-full h-40 object-cover"
-            />
-            {/* Card Content */}
-            <div className="p-4">
-              <h3 className="text-lg font-bold text-gray-800">{visa.country}</h3>
-              <p className="text-sm text-gray-600">
-                <strong>Visa Type:</strong> {visa.visa_type}
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Processing Time:</strong> {visa.processing_time}
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Fee:</strong> {visa.fee}
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Validity:</strong> {visa.validity}
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Application Method:</strong> {visa.application_method}
-              </p>
-              
-              {
-                user? (
-                  <button onClick={()=> navigate('/visadetails')} className="btn btn-outline btn-accent">See Details</button>
-                ):
-                (
-                  <button onClick={()=> navigate('/login')} className="btn btn-outline btn-accent">See Details</button>
-                )
-              }
-              
-              
-              
-              
-              
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6">
+          Latest Visas
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {latestVisas.map((visa) => (
+            <div
+              key={visa.id}
+              className="card bg-white shadow-md rounded-lg overflow-hidden"
+            >
+              {/* Country Image */}
+              <img
+                src={visa.image}
+                alt={`${visa.country} Visa`}
+                className="w-full h-40 object-cover"
+              />
+              {/* Card Content */}
+              <div className="p-4">
+                <h3 className="text-lg font-bold text-gray-800">{visa.country}</h3>
+                <p className="text-sm text-gray-600">
+                  <strong>Visa Type:</strong> {visa.visa_type}
+                </p>
+                <p className="text-sm text-gray-600">
+                  <strong>Processing Time:</strong> {visa.processing_time}
+                </p>
+                <p className="text-sm text-gray-600">
+                  <strong>Fee:</strong> {visa.fee}
+                </p>
+                <p className="text-sm text-gray-600">
+                  <strong>Validity:</strong> {visa.validity}
+                </p>
+                <p className="text-sm text-gray-600">
+                  <strong>Application Method:</strong> {visa.application_method}
+                </p>
+
+                {
+                  user ? (
+                    <button onClick={() => navigate('/visadetails')} className="btn btn-outline btn-accent">See Details</button>
+                  ) :
+                    (
+                      <button onClick={() => navigate('/login')} className="btn btn-outline btn-accent">See Details</button>
+                    )
+                }
+
+
+
+
+
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </section>
+
+
+      <div className="flex justify-center mt-8">
+        <button onClick={() => navigate('/allvisas')} className="mt-4 px-4 py-2 btn btn-outline btn-accent rounded-md">See All Visas</button>
       </div>
-    </section>
 
-        {/* 1st extra section */}
+      {/* 1st extra section */}
 
-        <section className="mt-12 px-4 sm:px-8 bg-gray-50 py-8 rounded-lg">
+      <section className="mt-12 px-4 sm:px-8 bg-gray-50 py-8 rounded-lg">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6">
           Visa Assistance Services
         </h2>
@@ -209,9 +214,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-    
 
-      
+
+
 
 
     </div>

@@ -44,7 +44,7 @@ const VisaDetails = () => {
      <h1 className="text-3xl font-bold mb-4">Visa Application</h1>
       <button
         onClick={() => setShowModal(true)}
-        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md"
+        className="mt-4 px-4 py-2 btn btn-outline btn-accent rounded-md"
       >
         Apply for a Visa
       </button>
@@ -114,7 +114,7 @@ const VisaDetails = () => {
              <div>
                <button
                  type="submit"
-                 className="w-full bg-green-600 text-white py-2 rounded-md"
+                 className="w-full btn btn-outline btn-accent py-2 rounded-md"
                >
                  Apply
                </button>
