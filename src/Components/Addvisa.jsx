@@ -18,13 +18,13 @@ const Addvisa = () => {
 
     const [loading, setLoading] = useState(false);
 
-    // Form Input Change Handler
+    
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    // Checkbox Change Handler
+   
     const handleCheckboxChange = (e) => {
         const { value, checked } = e.target;
         const { requiredDocuments } = formData;
@@ -42,7 +42,7 @@ const Addvisa = () => {
         }
     };
 
-    // Form Validation
+ 
     const validateForm = () => {
         if (!formData.countryName || !formData.visaType || !formData.fee) {
             Swal.fire("Error", "Please fill all the required fields.", "error");
@@ -51,7 +51,7 @@ const Addvisa = () => {
         return true;
     };
 
-    // Submit Form Handler
+ 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -61,7 +61,7 @@ const Addvisa = () => {
         const user = auth.currentUser;
 
         if (user) {
-            formData.userId = user.uid; // Attach userId to form data
+            formData.userId = user.uid; 
         } else {
             Swal.fire("Error", "You must be logged in to add a visa.", "error");
             return;
@@ -107,7 +107,7 @@ const Addvisa = () => {
         <div className="container mx-auto p-4">
             <h1 className="text-3xl font-bold mb-6 text-center">Add Visa</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Country Image */}
+            
                 <div>
                     <label className="block text-sm font-medium mb-1">Country Image URL</label>
                     <input
@@ -120,7 +120,7 @@ const Addvisa = () => {
                     />
                 </div>
 
-                {/* Country Name */}
+              
                 <div>
                     <label className="block text-sm font-medium mb-1">Country Name</label>
                     <input
@@ -133,7 +133,7 @@ const Addvisa = () => {
                     />
                 </div>
 
-                {/* Visa Type */}
+               
                 <div>
                     <label className="block text-sm font-medium mb-1">Visa Type</label>
                     <select
@@ -152,7 +152,7 @@ const Addvisa = () => {
                     </select>
                 </div>
 
-                {/* Processing Time */}
+           
                 <div>
                     <label className="block text-sm font-medium mb-1">Processing Time</label>
                     <input
@@ -165,7 +165,7 @@ const Addvisa = () => {
                     />
                 </div>
 
-                {/* Required Documents */}
+              
                 <div>
                     <label className="block text-sm font-medium mb-1">Required Documents</label>
                     <div className="space-y-2">
@@ -196,7 +196,7 @@ const Addvisa = () => {
                     </div>
                 </div>
 
-                {/* Description */}
+              
                 <div>
                     <label className="block text-sm font-medium mb-1">Description</label>
                     <textarea
@@ -209,7 +209,7 @@ const Addvisa = () => {
                     />
                 </div>
 
-                {/* Age Restriction */}
+             
                 <div>
                     <label className="block text-sm font-medium mb-1">Age Restriction</label>
                     <input
@@ -222,7 +222,7 @@ const Addvisa = () => {
                     />
                 </div>
 
-                {/* Fee */}
+        
                 <div>
                     <label className="block text-sm font-medium mb-1">Fee</label>
                     <input
@@ -235,7 +235,7 @@ const Addvisa = () => {
                     />
                 </div>
 
-                {/* Validity */}
+              
                 <div>
                     <label className="block text-sm font-medium mb-1">Validity</label>
                     <input
@@ -248,7 +248,7 @@ const Addvisa = () => {
                     />
                 </div>
 
-                {/* Application Method */}
+             
                 <div>
                     <label className="block text-sm font-medium mb-1">Application Method</label>
                     <input
@@ -261,7 +261,7 @@ const Addvisa = () => {
                     />
                 </div>
 
-                {/* Submit Button */}
+             
                 <div className="flex justify-center">
                     <button
                         type="submit"

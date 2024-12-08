@@ -1,18 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "./Provider/Authprovider";
-// Adjust path if needed
 
 const MyAddedVisa = () => {
-  const [visas, setVisas] = useState([]);
-  const [editingVisa, setEditingVisa] = useState(null);
-  const { user } = useContext(AuthContext); // Access user details from Firebase
+  const [visas, setVisas] = useState([]); 
+  const [editingVisa, setEditingVisa] = useState(null); 
+  const { user } = useContext(AuthContext); 
 
-  // Fetch user's visas
+ 
   useEffect(() => {
     const fetchVisas = async () => {
       if (!user) return;
-
       try {
         const response = await fetch(`http://localhost:5000/my-visas/${user.uid}`);
         const data = await response.json();
@@ -21,34 +19,45 @@ const MyAddedVisa = () => {
         console.error("Error fetching visas:", error);
       }
     };
-
     fetchVisas();
   }, [user]);
 
-  // Handle delete
+  // Delete visa 
   const handleDelete = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:5000/delete-visa/${id}`, {
-        method: "DELETE",
-      });
-      const result = await response.json();
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(`http://localhost:5000/delete-visa/${id}`, {
+            method: "DELETE",
+          });
+          const result = await response.json();
 
-      if (result.deletedCount > 0) {
-        Swal.fire("Visa deleted successfully!", "", "success");
-        setVisas(visas.filter((visa) => visa._id !== id));
+          if (result.deletedCount > 0) {
+            Swal.fire("Deleted!", "Visa has been deleted.", "success");
+            setVisas((prevVisas) => prevVisas.filter((visa) => visa._id !== id)); 
+          } else {
+            Swal.fire("Failed to delete visa", "", "error");
+          }
+        } catch (error) {
+          console.error("Error deleting visa:", error);
+          Swal.fire("Failed to delete visa", "", "error");
+        }
       }
-    } catch (error) {
-      console.error("Error deleting visa:", error);
-      Swal.fire("Failed to delete visa", "", "error");
-    }
+    });
   };
 
-  // Handle edit
+
   const handleEdit = (visa) => {
     setEditingVisa(visa);
   };
 
-  // Handle update
+  // Update visa
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -64,12 +73,15 @@ const MyAddedVisa = () => {
 
       if (result.modifiedCount > 0) {
         Swal.fire("Visa updated successfully!", "", "success");
-        setVisas(
-          visas.map((visa) =>
+
+        setVisas((prevVisas) =>
+          prevVisas.map((visa) =>
             visa._id === editingVisa._id ? { ...editingVisa } : visa
           )
-        );
-        setEditingVisa(null); // Close the modal
+        ); 
+        setEditingVisa(null);
+      } else {
+        Swal.fire("No changes made to the visa", "", "info");
       }
     } catch (error) {
       console.error("Error updating visa:", error);
@@ -121,7 +133,7 @@ const MyAddedVisa = () => {
       )}
 
       {editingVisa && (
-        <div className="modal">
+        <div className="modal modal-open">
           <div className="modal-box">
             <h3 className="text-lg font-bold">Edit Visa</h3>
             <form onSubmit={handleUpdate} className="space-y-4">
