@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.jpeg'
 import { FaRegUserCircle } from "react-icons/fa";
 import { FiAlignJustify } from "react-icons/fi";
@@ -48,11 +48,11 @@ const Header = () => {
                         <div className="flex items-center space-x-2">
                             <img
                                 src={user.photoURL}
-                                alt={user.displayName}
+                                alt=""
                                 className="w-10 h-10 rounded-full"
                                 title={user.displayName} 
                             />
-                            <button onClick={logout} className="btn btn-outline btn-error">Logout</button>
+                           <Link to='/home'> <button onClick={logout} className="btn btn-outline btn-error">Logout</button> </Link>
                         </div>
                     ) : (
                         <FaRegUserCircle className="text-gray-600 text-3xl" />

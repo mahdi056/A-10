@@ -2,10 +2,12 @@ import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStat
 import { createContext, useEffect, useState } from "react";
 import app from "../../firebase.init";
 
+
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const Authprovider = ({children}) => {
+   
 
     const [user, setUser] = useState(null);
     console.log(user);
@@ -19,6 +21,7 @@ const Authprovider = ({children}) => {
         return updateProfile(auth.currentUser, updatedData);
     };
     const logout = () => {
+       
         return signOut(auth)
     }
 
