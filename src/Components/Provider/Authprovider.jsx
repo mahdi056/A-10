@@ -10,7 +10,7 @@ const Authprovider = ({children}) => {
    
 
     const [user, setUser] = useState(null);
-    console.log(user);
+    // console.log(user);
     const provider = new GoogleAuthProvider();
 
     const createNewUser = (email,password) => {

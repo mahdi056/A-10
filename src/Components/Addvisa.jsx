@@ -96,7 +96,7 @@ const Addvisa = () => {
                 Swal.fire("Error", "Failed to add visa.", "error");
             }
         } catch (error) {
-            console.error("Error adding visa:", error);
+            // console.error("Error adding visa:", error);
             Swal.fire("Error", "An error occurred while adding the visa.", "error");
         } finally {
             setLoading(false);

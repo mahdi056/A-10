@@ -33,7 +33,7 @@ const VisaDetails = () => {
         setShowModal(false);
     
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       alert("An error occurred while submitting the application.");
     }
   };

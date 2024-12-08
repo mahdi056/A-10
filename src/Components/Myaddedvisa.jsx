@@ -16,7 +16,7 @@ const MyAddedVisa = () => {
         const data = await response.json();
         setVisas(data);
       } catch (error) {
-        console.error("Error fetching visas:", error);
+        // console.error("Error fetching visas:", error);
       }
     };
     fetchVisas();
@@ -45,7 +45,7 @@ const MyAddedVisa = () => {
             Swal.fire("Failed to delete visa", "", "error");
           }
         } catch (error) {
-          console.error("Error deleting visa:", error);
+          // console.error("Error deleting visa:", error);
           Swal.fire("Failed to delete visa", "", "error");
         }
       }

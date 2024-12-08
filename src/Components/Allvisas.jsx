@@ -17,7 +17,7 @@ const AllVisas = () => {
         setVisas(data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching visas:", error);
+        // console.error("Error fetching visas:", error);
         setLoading(false);
       }
     };
