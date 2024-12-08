@@ -126,7 +126,7 @@ const Home = () => {
         {/* React Awesome reveal  */}
 
         <Fade cascade damping={0.2}>
-          <p className="text-center text-gray-700 dark:text-gray-400 mb-8">
+          <p className="text-center text-2xl text-gray-700 dark:text-gray-400 mb-8">
             Whether you're traveling, studying, or working abroad, we make the visa process stress-free and straightforward.
           </p>
         </Fade>
