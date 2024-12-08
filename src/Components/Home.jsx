@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import banner1 from "../assets/banner1.jpeg";
 import banner2 from "../assets/banner2.jpeg";
 import banner3 from "../assets/banner3.jpeg";
@@ -10,13 +10,25 @@ import germanyImage from '../assets/germany.jpg'
 import japanImage from '../assets/japan.jpg'
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./Provider/Authprovider";
+import { Typewriter } from "react-simple-typewriter";
+import { Fade } from "react-awesome-reveal";
 
 
 const Home = () => {
 
   const { user } = useContext(AuthContext);
-
   const navigate = useNavigate();
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  
+   const toggleTheme = () => {
+     setIsDarkMode((prev) => !prev);
+   };
+ 
+  
+   useEffect(() => {
+     document.documentElement.classList.toggle("dark", isDarkMode);
+   }, [isDarkMode]);
 
   const latestVisas = [
     {
@@ -82,9 +94,45 @@ const Home = () => {
   ];
 
   return (
-    <div className="w-3/4 mx-auto">
+    <div className="dark:text-white dark:bg-black">
+
+
+    <div className="w-3/4 mx-auto dark:text-white dark:bg-black">
+    {/* Theme changing */}
+      <div className="flex justify-end mt-8 mb-4">
+      <input onClick={toggleTheme} type="checkbox" value="synthwave" className="toggle theme-controller" />
+      </div>
+
+      {/* React simple typewriter */}
+
+      <div className="text-center my-8">
+          {/* React Simple Typewriter */}
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white">
+            Welcome to <span className=" text-green-600">Global Visas</span>
+          </h1>
+          <h2 className="text-xl sm:text-2xl text-red-600 dark:text-red-600">
+            <Typewriter
+              words={['Your Gateway to the World!', 'Visa Services Made Simple.', 'Apply for Any Visa Type Today!']}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </h2>
+        </div>
+
+        {/* React Awesome reveal  */}
+
+        <Fade cascade damping={0.2}>
+          <p className="text-center text-gray-700 dark:text-gray-400 mb-8">
+            Whether you're traveling, studying, or working abroad, we make the visa process stress-free and straightforward.
+          </p>
+        </Fade>
+     
       {/* Carousel */}
-      <div className="carousel w-full md:h-[500px]">
+      <div className="carousel w-full md:h-[500px] dark:text-white dark:bg-black">
         <div id="slide1" className="carousel-item relative w-full">
           <img src={banner1} className="w-full object-cover h-[500px]" alt="Banner 1" />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -110,15 +158,15 @@ const Home = () => {
 
       {/* Latest visa Section */}
 
-      <section className="mt-8 px-4 sm:px-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6">
+      <section className="mt-8 px-4 sm:px-8 ">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6 dark:text-white dark:bg-black">
           Latest Visas
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 dark:text-white dark:bg-black">
           {latestVisas.map((visa) => (
             <div
               key={visa.id}
-              className="card bg-white shadow-md rounded-lg overflow-hidden"
+              className="card bg-white shadow-md rounded-lg overflow-hidden dark:text-white dark:bg-black"
             >
               {/* Country Image */}
               <img
@@ -128,20 +176,20 @@ const Home = () => {
               />
               {/* Card Content */}
               <div className="p-4">
-                <h3 className="text-lg font-bold text-gray-800">{visa.country}</h3>
-                <p className="text-sm text-gray-600">
+                <h3 className="text-lg font-bold">{visa.country}</h3>
+                <p className="text-sm">
                   <strong>Visa Type:</strong> {visa.visa_type}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm ">
                   <strong>Processing Time:</strong> {visa.processing_time}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm ">
                   <strong>Fee:</strong> {visa.fee}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm ">
                   <strong>Validity:</strong> {visa.validity}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm">
                   <strong>Application Method:</strong> {visa.application_method}
                 </p>
 
@@ -171,7 +219,7 @@ const Home = () => {
 
       {/* 1st extra section */}
 
-      <section className="mt-12 px-4 sm:px-8 bg-gray-50 py-8 rounded-lg">
+      <section className="mt-12 px-4 sm:px-8 bg-gray-50 py-8 rounded-l">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6">
           Visa Assistance Services
         </h2>
@@ -216,6 +264,10 @@ const Home = () => {
       </section>
 
 
+
+
+
+    </div>
 
 
 

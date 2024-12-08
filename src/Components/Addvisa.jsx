@@ -67,7 +67,7 @@ const Addvisa = () => {
                     applicationMethod: "",
                 });
             } else {
-                alert("Failed to add visa.");
+                Swal.error("Failed to add visa.");
             }
         } catch (error) {
             console.error("Error adding visa:", error);

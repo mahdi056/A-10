@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AllVisas = () => {
+  const navigate = useNavigate();  
   const [visas, setVisas] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -69,7 +71,7 @@ const AllVisas = () => {
 
   
             <div className="flex justify-center mt-8 mb-8">
-            <button className="btn btn-outline btn-accent px-4 py-2 rounded-md">See Details</button>
+            <button onClick={()=> navigate('/visadetails')} className="btn btn-outline btn-accent px-4 py-2 rounded-md">See Details</button>
             </div>
 
 
