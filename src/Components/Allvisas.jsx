@@ -12,7 +12,7 @@ const AllVisas = () => {
   useEffect(() => {
     const fetchVisas = async () => {
       try {
-        const response = await fetch("http://localhost:5000/all-visas");
+        const response = await fetch("https://server-site-gray-delta.vercel.app/all-visas");
         const data = await response.json();
         setVisas(data);
         setLoading(false);

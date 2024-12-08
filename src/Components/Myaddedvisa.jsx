@@ -12,7 +12,7 @@ const MyAddedVisa = () => {
     const fetchVisas = async () => {
       if (!user) return;
       try {
-        const response = await fetch(`http://localhost:5000/my-visas/${user.uid}`);
+        const response = await fetch(`https://server-site-gray-delta.vercel.app/my-visas/${user.uid}`);
         const data = await response.json();
         setVisas(data);
       } catch (error) {
@@ -33,7 +33,7 @@ const MyAddedVisa = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await fetch(`http://localhost:5000/delete-visa/${id}`, {
+          const response = await fetch(`https://server-site-gray-delta.vercel.app/delete-visa/${id}`, {
             method: "DELETE",
           });
           const result = await response.json();
@@ -62,7 +62,7 @@ const MyAddedVisa = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:5000/update-visa/${editingVisa._id}`,
+        `https://server-site-gray-delta.vercel.app/update-visa/${editingVisa._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

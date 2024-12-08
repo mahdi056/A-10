@@ -19,7 +19,7 @@ const VisaDetails = () => {
     e.preventDefault();
     // for database
     try {
-      const response = await fetch("http://localhost:5000/apply", {
+      const response = await fetch("https://server-site-gray-delta.vercel.app/apply", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
